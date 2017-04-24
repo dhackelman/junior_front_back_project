@@ -48,17 +48,18 @@
         data_table_cell = document.createElement('td');
         //use this variable to make toggle possible
         data_table_exists = false;
-    // Builds the HTML Table out of myList json data from Ivy restful service.
-    // .clondNode(false) is necessary because the for loop will otherwise create odd mega-elements instead of individual ones for each piece of the data set
+    // Builds the HTML Table out of table_data.
+    // .cloneNode(false) is necessary because the for loop will otherwise create odd mega-elements instead of individual ones for each piece of the data set
+    //arr argument will be replaced by table_data when it is called with the on-click event below
     function buildTable(arr, parent) {
 
-        var table = data_table.cloneNode(false),
-            columns = addColumnHeaders(arr, table);
+        var table = data_table.cloneNode(false);
+        var columns = addColumnHeaders(arr, table);
         for (var i = 0; i < arr.length; ++i) {
             var tr = data_table_row.cloneNode(false);
             for (var j = 0; j < columns.length; ++j) {
                 var td = data_table_cell.cloneNode(false);
-                cellValue = arr[i][columns[j]];
+                var cellValue = arr[i][columns[j]];
                 td.appendChild(document.createTextNode(arr[i][columns[j]] || ''));
                 tr.appendChild(td);
             }
@@ -71,11 +72,9 @@
     }
 
     // Adds a header row to the table and returns the set of columns.
-    // Need to do union of keys from all records as some records may not contain
-    // all records
     function addColumnHeaders(arr, table) {
-        var columnSet = [],
-            tr = data_table_row.cloneNode(false);
+        var columnSet = [];
+        var tr = data_table_row.cloneNode(false);
         for (var i = 0, l = arr.length; i < l; i++) {
             for (var key in arr[i]) {
                 if (arr[i].hasOwnProperty(key) && columnSet.indexOf(key) === -1) {
