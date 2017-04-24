@@ -5,12 +5,12 @@ use strict;
 
 my $dbh = DBI -> connect("dbi:SQLite:test.db") ;
 
-my $sth = $dbh->prepare(qq{ UPDATE table_data SET last_name = ? WHERE last_name isNull });
+# test to make sure null values don't break the print subroutine
+# my $sth = $dbh->prepare(qq{UPDATE alien_table SET last_name = ? WHERE last_name isNull});
+#
+# $sth->execute('yo');
 
-$sth->execute('null');
-
-
-$sth = $dbh->prepare('SELECT * FROM table_data');
+$sth = $dbh->prepare('SELECT * FROM alien_table');
 
 $sth->execute();
 
