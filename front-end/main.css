@@ -1,0 +1,46 @@
+header {
+  min-height: 50px;
+  width: 100%;
+}
+main {
+  display: flex;
+}
+div {
+  border: 2px solid gray;
+  min-height: 400px;
+  width: 33%;
+}
+
+div:nth-child(odd) {
+  background: gray;
+}
+
+button  {
+  background-color: #99badd;
+  border: 0px;
+  border-radius: 5px;
+  box-shadow: none;
+  display: block;
+  font-size: 1rem;
+  margin: 5px auto;
+}
+
+table {
+  /*background-color: #efefef;*/
+  margin: 5px auto;
+  width: 90%;
+}
+
+th, td {
+  /*border: 1px solid black;*/
+  height: 25px;
+  margin: 0;
+  padding: 5px 5px;
+}
+
+tr:nth-child(even) {
+  background-color: #fff;
+}
+tr:nth-child(odd) {
+  background-color: #efefef;
+}
